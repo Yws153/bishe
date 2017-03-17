@@ -1,2 +1,6 @@
 
-export Amount from './Amount'
+
+import Buttons from './Button'
+import Amount from './Amount'
+
+export { Buttons, Amount }

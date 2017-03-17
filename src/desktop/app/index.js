@@ -1,28 +1,19 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { Button, ButtonToolbar } from 'react-bootstrap';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'Recharts'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from 'app/containers/app.js'
 
-import { HashRouter, Route } from 'react-keeper'
+import todoApp from 'app/reducers'
 
-import Home from 'app/containers/Home'
 
-export default
-class App extends React.Component{
-	render() {
-		return (
-			<div>
-                <HashRouter>
-                    <div>
-                        <Route cache component={ Home } path="/"/>
-                    </div>
-                </HashRouter>
-			</div>
-		)
-	}
-}
+let store = createStore(todoApp);
 
-ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
+let rootElement = document.getElementById('root')
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
 )

@@ -4,7 +4,6 @@ export default
 class Detail extends Component {
 	render() {
 
-
 		return (
 			<span>'jhuih'</span>
 		)
