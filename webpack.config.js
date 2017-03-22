@@ -17,23 +17,27 @@ const APP_PATH = path.resolve(SRC_DEVICE_PATH, 'app')
 
 const config = {
     //页面入口文件配置
-    // devServer:{
-    //     inline: true,
-    //     contentBase: './build/desktop'
-    // },
-	// devtool: 'inline-source-map',
+	devtool: 'inline-source-map',
     devServer: {
-        stats: {
-            colors: true
-        },
+        inline: true,
         publicPath: `/build/${DEVICE_TYPE}` //模板、样式、脚本、图片等资源对应server上的路径
     },
     entry: {
         // index: ['app/components/Button/index.js'],
         index: [`${APP_PATH}/index.js`],
         vendor: [
+            'es6-shim',
+            'history',
+            'immutable',
             'react',
-            'react-dom'
+            'react-dom',
+            'react-redux',
+            'react-router',
+            'redux',
+            'redux-thunk',
+            'react-router-dom',
+            'react-bootstrap'
+
         ]
     },
     //入口文件输出配置
@@ -118,7 +122,7 @@ if (NODE_ENV === 'production') {
         }
         // except: ['exports', 'require', '*'] //排除关键字
     }))
-	config.plugins.push(new webpack.optimize.CommonsChunkPlugin('xfnpkg', 'js/xfnpkg.js'))
+	config.plugins.push(new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'js/vendor.js' }))
     config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
 	delete config.devtool
 	delete config.debug

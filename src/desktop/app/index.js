@@ -1,19 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import App from 'app/containers/app.js'
+import customStore from 'app/stores/store'
+import Reducers from 'app/reducers'
+import CreateRouter from 'app/containers/app.js' 
 
-import todoApp from 'app/reducers'
+let store = customStore(Reducers)
 
-
-let store = createStore(todoApp);
-
-let rootElement = document.getElementById('root')
-
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  rootElement
+ReactDOM.render(
+    <Provider store={store}>
+        <CreateRouter />
+    </Provider>,
+    document.getElementById('root')
 )

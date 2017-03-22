@@ -1,4 +1,4 @@
 {
-  "plugins": ["recharts"],
+  "plugins": ["recharts", "transform-decorators-legacy"],
   "presets": ["es2015", "react"]
 }

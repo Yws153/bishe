@@ -1,14 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Buttons } from 'app/components'
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Prompt,
+  BrowserRouter
+} from 'react-router-dom'
 
-export default
-class Home extends React.Component{
+@connect(state => state)
+class Home extends React.Component {
 	render() {
+		const { homeState, history } = this.props
+
 		return (
 			<div>
-				<Buttons/>
-            </div>
+				<Buttons />
+				<div><Link to="/detail">One</Link></div>
+			</div>
 		)
 	}
 }
+
+export default Home
