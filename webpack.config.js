@@ -4,12 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 
-const NODE_ENV = process.env.NODE_ENV
-const DEVICE_TYPE = process.env.NODE_DEVICE
+// const NODE_ENV = process.env.NODE_ENV
+// const DEVICE_TYPE = process.env.NODE_DEVICE
 
-if (DEVICE_TYPE !== 'mobile' && DEVICE_TYPE !== 'desktop') {
-  throw new Error('you should set device type, such as NODE_DEVICE=mobile | desktop')
-}
+const NODE_ENV = 'development'
+const DEVICE_TYPE = 'desktop'
+
+// if (DEVICE_TYPE !== 'mobile' && DEVICE_TYPE !== 'desktop') {
+//   throw new Error('you should set device type, such as NODE_DEVICE=mobile | desktop')
+// }
 
 const SRC_DEVICE_PATH = path.resolve(__dirname, 'src/desktop')
 const BUILD_DEVICE_PATH = path.resolve(__dirname, 'build/desktop')
